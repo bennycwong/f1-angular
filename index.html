@@ -41,7 +41,7 @@
 			<div class="dropdown navbar-right form-group">
   			<button class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Change Season<span class="caret"></span></button>
   			<span class="dropdown-arrow"></span>
-  			<ul class="dropdown-menu">
+  			<ul class="dropdown-menu" role="menu" style="overflow-y: auto; min-height: 108px; max-height: 436px;">
     			<li ng-repeat="s in seasonsList |orderBy: 'season':true"><a href="#/{{s.season}}/drivers/">{{s.season}}</a></li>
   			</ul>
 			</div>
@@ -52,7 +52,7 @@
 	      <!-- <li><a href="#fakelink">Features</a></li>						 -->
 	    </ul>  
 	  </div>
-			
+	
 			<!-- /.navbar-collapse -->
 			
 		</nav><!-- /navbar -->
