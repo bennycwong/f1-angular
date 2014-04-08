@@ -16,16 +16,7 @@ angular.module('F1FeederApp.controllers', []).
 
   /* Drivers controller */
   controller('driversController', function($scope, $routeParams, ergastAPIservice) {
-		
-	  $scope.seasonsList = [];
-    
-		
-	  ergastAPIservice.getSeasons().success(function (response) {
-	      //Digging into the response to get the relevant data
-	      $scope.seasonsList = response.MRData.SeasonTable.Seasons;
-				console.log($scope);
-	  });
-		
+	
     $scope.nameFilter = null;
     $scope.driversList = [];
 		$scope.season = $routeParams.season;
@@ -34,11 +25,7 @@ angular.module('F1FeederApp.controllers', []).
         var re = new RegExp($scope.nameFilter, 'i');
         return !$scope.nameFilter || re.test(driver.Driver.givenName) || re.test(driver.Driver.familyName);
     };
-    $scope.updateDrivers = function () {
-				
-				window.open('#/'+$scope.season+'/drivers','_self')
-			
-    };
+    
     ergastAPIservice.getDrivers($scope.season).success(function (response) {
         //Digging into the response to get the relevant data
 				
@@ -46,7 +33,7 @@ angular.module('F1FeederApp.controllers', []).
 				$scope.standingsTable = response.MRData.StandingsTable
     });
   }).
-
+	
   /* Driver controller */
   controller('driverController', function($scope, $routeParams, ergastAPIservice) {
 		var year = 2014;

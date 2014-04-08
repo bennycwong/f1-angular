@@ -9,7 +9,8 @@ angular.module('F1FeederApp.services', [])
   .factory('ergastAPIservice', function($http) {
 
     var ergastAPI = {};
-    ergastAPI.getSeasons = function() {
+    
+		ergastAPI.getSeasons = function() {
       return $http({
         method: 'JSONP', 
         url: 'http://ergast.com/api/f1/seasons.json?callback=JSON_CALLBACK&limit=100&offset=0'
@@ -34,6 +35,13 @@ angular.module('F1FeederApp.services', [])
       return $http({
         method: 'JSONP', 
         url: 'http://ergast.com/api/f1/'+ season + '/drivers/'+ id +'/results.json?callback=JSON_CALLBACK'
+      });
+    }
+		
+    ergastAPI.getConstructors = function(season) {
+      return $http({
+        method: 'JSONP', 
+        url: 'http://ergast.com/api/f1/' + season + '/constructors.json?callback=JSON_CALLBACK'
       });
     }
 
