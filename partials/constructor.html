@@ -1,23 +1,34 @@
-<table class="table table-hover table-condensed ">
+ <h1>{{constructorInfo.season}} {{constructorInfo.Constructors[0].name}} Team</h1>
+  <div class="constructor-status">
+     
+    <img src="img/flags/{{constructorInfo.Constructors[0].nationality}}.png"/>  {{constructorInfo.Constructors[0].nationality}}<br>
+      </a>
+    <a href="{{constructorInfo.Constructors[0].url}}" target="_blank">Wikipedia URL</a>
+      <br><br>
+    </div>
+    <table class="table table-hover table-condensed ">
 <thead>
-  <tr><th colspan="4"><h4>{{standingsTable.season}} Constructors Championship Standings</h4>
-  <h5>Round {{standingsTable.StandingsLists[0].round}}</h5></th></tr>
-  <tr><th>Position</th><th>Constructor</th><th>Points</th><th>Wins</th><th>Link</th>
+
+
+
+
+  <tr><th>Car #</th><th>Driver Name</th><th>Nationality</th><th>Driver Code</th><th>Date of Birth</th><th>Biography</th>
 </thead>
 <tbody>
-  <tr ng-repeat="constructors in constructorsList | filter: searchFilter">
+  <tr ng-repeat="driver in driverTable.Drivers | filter: searchFilter">
+    <td>{{driver.permanentNumber}}</td>
 
-    <td>{{constructors.position}}</td>
     <td>
-      <img src="img/flags/{{constructors.Constructor.nationality}}.png" />
-      <a href="#/{{standingsTable.season}}/constructors/{{constructors.Constructor.constructorId}}">
-        &nbsp;&nbsp;{{constructors.Constructor.name}}
+      <a href="#/{{constructorInfo.season}}/drivers/{{driver.driverId}}">
+      {{driver.givenName}}&nbsp;{{driver.familyName}}
       </a>
     </td>
-    <td>{{constructors.points}}</td>
-    <td>{{constructors.wins}}</td>  
-    <td><a href='{{constructors.Constructor.url}}'>Wikipedia</a></td>  
-      
+
+    <td><img ng-show="driver" src="img/flags/{{driver.nationality}}.png"/>&nbsp;&nbsp;{{driver.nationality}}</td>
+    <td>{{driver.code}}</td>
+    <td>{{driver.dateOfBirth | date: 'MMM dd, yyyy'}}</td>
+    <td><a href="{{driver.url}}">Wikipedia</td>
+
   </tr>
 </tbody>
 </table>

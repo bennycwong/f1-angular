@@ -29,7 +29,7 @@
         <tr ng-repeat="race in races">
           <td>{{race.round}}</td>
           <td><img  src="img/flags/{{race.Circuit.Location.country}}.png" />&nbsp;&nbsp;
-          <a href="#/{{race.season}}/race/{{race.Circuit.circuitId}}">
+          <a href="#/{{race.season}}/races/{{race.round}}">
           {{race.raceName}}</td>
           </a>
           <td>

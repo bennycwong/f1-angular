@@ -7,7 +7,7 @@
   <tr ng-repeat="race in racesList | filter: searchFilter">
     <td>{{race.round}}</td>
     <td>
-      <a href="#/{{raceTable.season}}/races/{{race.Circuit.circuitId}}">
+      <a href="#/{{race.season}}/races/{{race.round}}">
 	  	<img  src="img/flags/{{race.Circuit.Location.country}}.png" />&nbsp;&nbsp;{{race.raceName}}
   	  </a>
 	  </td>

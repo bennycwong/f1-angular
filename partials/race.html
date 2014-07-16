@@ -1,26 +1,40 @@
-<table class="table table-hover table-condensed ">
+ <h1>{{race.raceName}}&nbsp;{{race.season}}</h1>
+ <h4>Round {{race.round}}: {{race.Circuit.Location.locality}}, {{race.Circuit.Location.country}}&nbsp;&nbsp;<img src="img/flags/{{race.Circuit.Location.country}}.png" /></h4>
+  <div class="driver-status">
+     
+      Date: {{race.date + 'T' +race.time| date: 'MMMM dd, yyyy'}}<br>
+      Start Time: {{race.date +'T'+race.time | date: 'hh:mm a'}}<br>
+      Wikipedia:  <a href="{{race.Circuit.url}}" target="_blank">
+         URL
+      </a><br/>
+      
+    </div>
+    <table class="table table-hover table-condensed ">
 <thead>
-  <tr><th colspan="4"><h4>{{raceTable.season}} Race Schedule</h4></th></tr>
-  <tr><th>Number</th><th>Race Name</th><th>Circuit Name</th><th>Location</th><th>Date</th><th>Start Time (Local)</th>
+
+
+
+
+  <tr><th>Result</th><th>Driver</th><th>Constructor</th><th>Points</th><th>Time</th><th>Fastest Lap</th><th>Status</th>
 </thead>
 <tbody>
-  <tr ng-repeat="race in racesList | filter: searchFilter">
-    <td>{{race.round}}</td>
+  <tr ng-repeat="results in race.Results | filter: searchFilter">
+    <td>{{results.position}}</td>
     <td>
-      <!-- <a href="#/{{standingsTable.season}}/drivers/{{driver.Driver.driverId}}"> -->
-	  	{{race.raceName}}
-	  <!-- </a> -->
-	  </td>
-    <td>
-      <a href="{{race.Circuit.url}}" target="_blank">
-        {{race.Circuit.circuitName}}
+      <a href="#/{{race.season}}/drivers/{{results.Driver.driverId}}">
+        {{results.Driver.givenName}}&nbsp;{{results.Driver.familyName}}
       </a>
     </td>
     <td>
-      {{race.Circuit.Location.locality}}, {{race.Circuit.Location.country}}
+      <a href="#/{{race.season}}/constructor/{{results.Constructor.constructorId}}">
+        {{results.Constructor.name}}
+      </a>
     </td>
-    <td>{{race.date + 'T' +race.time| date: 'MM.dd'}}</td>
-    <td>{{race.date +'T'+race.time | date: 'hh:mm a'}}</td>
+    <td>{{results.points}}</td>
+    <td>{{results.Time.time}}</td>
+    <td>{{results.FastestLap.Time.time}}</td>
+    <td>{{results.status}}</td>
+
   </tr>
 </tbody>
 </table>

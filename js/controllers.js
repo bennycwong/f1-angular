@@ -95,22 +95,33 @@ angular.module('F1FeederApp.controllers', []).
 
     /* Constructor controller */
   controller('constructorController', function($scope, $routeParams, ergastAPIservice) {
+    $scope.id = $routeParams.id;
+    $scope.driverTable = [];
+    $scope.constructorInfo = [];
+    $scope.season = $routeParams.season;
 
-  
+    ergastAPIservice.getConstructorInfo($scope.season, $scope.id).success(function (response) {
+      
+      $scope.constructorInfo = response.MRData.ConstructorTable;
+      console.log($scope.constructorInfo)
+    });
+    ergastAPIservice.getDriversOfConstructors($scope.season, $scope.id).success(function (response) {
+      $scope.driverTable = response.MRData.DriverTable
+    });
+
   }).
 
     /* Race controller */
   controller('raceController', function($scope, $routeParams, ergastAPIservice) {
     $scope.id = $routeParams.id;
-    $scope.races = [];
-    $scope.driver = null;
+    $scope.race = null;
     $scope.season = $routeParams.season;
+    $scope.raceResult = [];
 
-    ergastAPIservice.getDriverDetails($scope.season, $scope.id).success(function (response) {
-        $scope.driver = response.MRData.StandingsTable.StandingsLists[0].DriverStandings[0]; 
+    ergastAPIservice.getRace($scope.season, $scope.id).success(function (response) {
+        $scope.race = response.MRData.RaceTable.Races[0];
+
     });
 
-    ergastAPIservice.getDriverRaces($scope.season, $scope.id).success(function (response) {
-        $scope.races = response.MRData.RaceTable.Races; 
-    }); 
+   
   });
