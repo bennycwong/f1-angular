@@ -24,6 +24,20 @@ angular.module('F1FeederApp.services', [])
       });
     }
 
+    ergastAPI.getRaces = function(season) {
+      return $http({
+        method: 'JSONP', 
+        url: 'http://ergast.com/api/f1/'+ season + '.json?callback=JSON_CALLBACK'
+      });
+    }
+
+    ergastAPI.getConstructors = function(season) {
+      return $http({
+        method: 'JSONP', 
+        url: 'http://ergast.com/api/f1/'+ season + '/constructorStandings.json?callback=JSON_CALLBACK'
+      });
+    }
+
     ergastAPI.getDriverDetails = function(season, id) {
       return $http({
         method: 'JSONP', 
@@ -38,12 +52,7 @@ angular.module('F1FeederApp.services', [])
       });
     }
 		
-    ergastAPI.getConstructors = function(season) {
-      return $http({
-        method: 'JSONP', 
-        url: 'http://ergast.com/api/f1/' + season + '/constructors.json?callback=JSON_CALLBACK'
-      });
-    }
+    
 
     return ergastAPI;
   });

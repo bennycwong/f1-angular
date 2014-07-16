@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>F1 Info</title>
+  <title>F1 Angular Demo</title>
   <script src="../bower_components/angular/angular.js"></script>
   <script src="../bower_components/angular-route/angular-route.js"></script>
   <script type="text/javascript" src="js/app.js"></script>
@@ -33,7 +33,7 @@
 		    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-01">
 		      <span class="sr-only">Toggle navigation</span>
 		    </button>
-		    <a class="navbar-brand" href="#">F1</a>
+		    <a class="navbar-brand" href="#">F1 Angular Demo</a>
 		  </div>
 			
 		  
@@ -41,15 +41,17 @@
 			<div class="dropdown navbar-right form-group">
   			<button class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Change Season<span class="caret"></span></button>
   			<span class="dropdown-arrow"></span>
-  			<ul class="dropdown-menu" role="menu" style="overflow-y: auto; min-height: 108px; max-height: 436px;">
+  			<ul class="dropdown-menu" role="menu" style="overflow-y: auto; min-height: 108px; max-height: 436px;" >
     			<li ng-repeat="s in seasonsList |orderBy: 'season':true"><a href="#/{{s.season}}/drivers/">{{s.season}}</a></li>
   			</ul>
 			</div>
 		</form>
 	  <div class="collapse navbar-collapse" id="navbar-collapse-01">
 	    <ul class="nav navbar-nav">           
-	      <li class="active"><a href="#/2014/Drivers">Drivers</a></li>
-	      <!-- <li><a href="#fakelink">Features</a></li>						 -->
+	      <li class="active"><a href="#/2014/drivers"><span ng-bind="season"></span>Drivers</a></li>
+        <li class="active"><a href="#/2014/constructors"><span ng-bind="season"></span>Constructors</a></li>
+        <li class="active"><a href="#/2014/races">Race Schedule</a></li>
+
 	    </ul>  
 	  </div>
 	
