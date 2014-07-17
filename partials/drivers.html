@@ -1,10 +1,13 @@
+<div ng-include src="'partials/nav.html'"></div>
+<div class="container">
 <table class="table table-hover table-condensed ">
 <thead>
-  <tr><th colspan="4"><h4>{{standingsTable.season}} Drivers Championship Standings
+  <tr><th colspan="4"><h3>{{standingsTable.season}} Drivers Championship Standings</h3>
   <h5>Round {{standingsTable.StandingsLists[0].round}}</h5></th></tr>
   <tr><th>Position</th><th>Driver</th><th>Constructor</th><th>Points</th>
 </thead>
 <tbody>
+
   <tr ng-repeat="driver in driversList | filter: searchFilter">
     <td>{{$index + 1}}</td>
     <td>
@@ -22,3 +25,4 @@
   </tr>
 </tbody>
 </table>
+</div>

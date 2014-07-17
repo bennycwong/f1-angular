@@ -1,34 +1,36 @@
- <h1>{{constructorInfo.season}} {{constructorInfo.Constructors[0].name}} Team</h1>
+<div ng-include src="'partials/nav.html'"></div>
+  <div class="container">
+  <h1>{{constructorInfo.season}} {{constructorInfo.Constructors[0].name}} Team</h1>
   <div class="constructor-status">
      
-    <img src="img/flags/{{constructorInfo.Constructors[0].nationality}}.png"/>  {{constructorInfo.Constructors[0].nationality}}<br>
-      </a>
-    <a href="{{constructorInfo.Constructors[0].url}}" target="_blank">Wikipedia URL</a>
-      <br><br>
-    </div>
+  <img src="img/flags/{{constructorInfo.Constructors[0].nationality}}.png"/>  {{constructorInfo.Constructors[0].nationality}}<br>
+  <a href="{{constructorInfo.Constructors[0].url}}" target="_blank">Wikipedia URL</a>
+  <br><br>
+  </div>
     <table class="table table-hover table-condensed ">
-<thead>
+    <thead>
 
 
 
 
-  <tr><th>Car #</th><th>Driver Name</th><th>Nationality</th><th>Driver Code</th><th>Date of Birth</th><th>Biography</th>
-</thead>
-<tbody>
-  <tr ng-repeat="driver in driverTable.Drivers | filter: searchFilter">
-    <td>{{driver.permanentNumber}}</td>
+      <tr><th>Car #</th><th>Driver Name</th><th>Nationality</th><th>Driver Code</th><th>Date of Birth</th><th>Biography</th>
+    </thead>
+    <tbody>
+      <tr ng-repeat="driver in driverTable.Drivers | filter: searchFilter">
+        <td>{{driver.permanentNumber}}</td>
 
-    <td>
-      <a href="#/{{constructorInfo.season}}/drivers/{{driver.driverId}}">
-      {{driver.givenName}}&nbsp;{{driver.familyName}}
-      </a>
-    </td>
+        <td>
+          <a href="#/{{constructorInfo.season}}/drivers/{{driver.driverId}}">
+          {{driver.givenName}}&nbsp;{{driver.familyName}}
+          </a>
+        </td>
 
-    <td><img ng-show="driver" src="img/flags/{{driver.nationality}}.png"/>&nbsp;&nbsp;{{driver.nationality}}</td>
-    <td>{{driver.code}}</td>
-    <td>{{driver.dateOfBirth | date: 'MMM dd, yyyy'}}</td>
-    <td><a href="{{driver.url}}">Wikipedia</td>
+        <td><img ng-show="driver" src="img/flags/{{driver.nationality}}.png"/>&nbsp;&nbsp;{{driver.nationality}}</td>
+        <td>{{driver.code}}</td>
+        <td>{{driver.dateOfBirth | date: 'MMM dd, yyyy'}}</td>
+        <td><a href="{{driver.url}}">Wikipedia</td>
 
-  </tr>
-</tbody>
-</table>
+      </tr>
+    </tbody>
+    </table>
+</div>

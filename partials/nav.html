@@ -1,0 +1,35 @@
+  <div ng-controller="seasonsController">
+    <nav class="navbar navbar-default" role="navigation">
+      
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-01">
+          <span class="sr-only">Toggle navigation</span>
+        </button>
+        <a class="navbar-brand" href="#">F1 <span ng-bind="season"></span></a>
+      </div>
+      
+      
+      <form role="search" class="navbar-form navbar-right">
+      <div class="dropdown navbar-right form-group">
+
+        <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Selected Season: <span ng-bind="season"></span><span class="caret"></span></button>
+        <span class="dropdown-arrow"></span>
+        <ul class="dropdown-menu" role="menu" style="overflow-y: auto; min-height: 108px; max-height: 436px;" >
+          <li ng-repeat="s in seasonsList |orderBy: 'season':true"><a href="#/{{s.season}}/drivers/" ng-model="selectedSeason">{{s.season}}</a></li>
+        </ul>
+      </div>
+    </form>
+    <div class="collapse navbar-collapse" id="navbar-collapse-01">
+      <ul class="nav navbar-nav">           
+        <li class="active"><a href="#/{{season}}/drivers"></span>Drivers</a></li>
+        <li class="active"><a href="#/{{season}}/constructors"></span>Constructors</a></li>
+        <li class="active"><a href="#/{{season}}/races">Race Schedule</a></li>
+
+      </ul>  
+    </div>
+  
+      <!-- /.navbar-collapse -->
+      
+    </nav><!-- /navbar -->
+    
+  </div>

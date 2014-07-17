@@ -1,17 +1,28 @@
 'use strict';
 
 /* Controllers */
-angular.module('F1FeederApp.controllers', []).
+angular.module('F1FeederApp.controllers', ['ngMap']).
 	/* Seasons controller */
-	controller('seasonsController', function($scope, ergastAPIservice, $location, $route, $routeParams) {
+  controller('seasonsController', function($scope, ergastAPIservice, $location, $route, $routeParams) {
     // console.log($location.path().replace('/drivers','').replace('/races','').replace('/constructors','').replace('/',''))
-    $scope.selectedSeason = $location.path().replace('/drivers','').replace('/races','').replace('/constructors','').replace('/','');
+    // $scope.selectedSeason = $location.path().replace('/drivers','').replace('/races','').replace('/constructors','').replace('/','');
     $scope.seasonsList = [];
-	  ergastAPIservice.getSeasons().success(function (response) {
-	      //Digging into the response to get the relevant data
-	      $scope.seasonsList = response.MRData.SeasonTable.Seasons;
-	  });
-	}).
+    ergastAPIservice.getSeasons().success(function (response) {
+        //Digging into the response to get the relevant data
+        $scope.seasonsList = response.MRData.SeasonTable.Seasons;
+    });
+  }).
+
+  /* Home controller */
+  controller('homeController', function($scope, ergastAPIservice, $location, $route, $routeParams) {
+    // console.log($location.path().replace('/drivers','').replace('/races','').replace('/constructors','').replace('/',''))
+    // $scope.selectedSeason = $location.path().replace('/drivers','').replace('/races','').replace('/constructors','').replace('/','');
+    $scope.seasonsList = [];
+    ergastAPIservice.getSeasons().success(function (response) {
+        //Digging into the response to get the relevant data
+        $scope.seasonsList = response.MRData.SeasonTable.Seasons;
+    });
+  }).
 
   /* Drivers controller */
   controller('driversController', function($scope, $routeParams, ergastAPIservice) {
@@ -116,12 +127,14 @@ angular.module('F1FeederApp.controllers', []).
     $scope.id = $routeParams.id;
     $scope.race = null;
     $scope.season = $routeParams.season;
-    $scope.raceResult = [];
-
     ergastAPIservice.getRace($scope.season, $scope.id).success(function (response) {
-        $scope.race = response.MRData.RaceTable.Races[0];
+      $scope.race = response.MRData.RaceTable.Races[0];
+      
 
     });
+
+    
+   
 
    
   });

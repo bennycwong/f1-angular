@@ -1,40 +1,49 @@
- <h1>{{race.raceName}}&nbsp;{{race.season}}</h1>
- <h4>Round {{race.round}}: {{race.Circuit.Location.locality}}, {{race.Circuit.Location.country}}&nbsp;&nbsp;<img src="img/flags/{{race.Circuit.Location.country}}.png" /></h4>
-  <div class="driver-status">
-     
-      Date: {{race.date + 'T' +race.time| date: 'MMMM dd, yyyy'}}<br>
-      Start Time: {{race.date +'T'+race.time | date: 'hh:mm a'}}<br>
-      Wikipedia:  <a href="{{race.Circuit.url}}" target="_blank">
-         URL
-      </a><br/>
+<div ng-include src="'partials/nav.html'"></div>
+<div class="container" >
+   <h1>{{race.raceName}}&nbsp;{{race.season}}</h1>
+   <h4>Round {{race.round}}: {{race.Circuit.Location.locality}}, {{race.Circuit.Location.country}}&nbsp;&nbsp;<img src="img/flags/{{race.Circuit.Location.country}}.png" /></h4>
+    <div class="driver-status"ng-model="race">
+    <map ng-if="race" center="[{{race.Circuit.Location.lat}}, {{race.Circuit.Location.long}}]" zoom="13" style="display:block;height:300px">
+
+
+        <marker position="[{{race.Circuit.Location.lat}}, {{race.Circuit.Location.long}}]"></marker><br>
+      </map>
+       
+        Date: {{race.date + 'T' +race.time| date: 'MMMM dd, yyyy'}}<br>
+        Start Time: {{race.date +'T'+race.time | date: 'hh:mm a'}}<br>
+        Wikipedia:  <a href="{{race.Circuit.url}}" target="_blank">
+           URL
+        </a><br/>
+        
+      </div>
       
-    </div>
-    <table class="table table-hover table-condensed ">
-<thead>
+      <table class="table table-hover table-condensed ">
+  <thead>
 
 
 
 
-  <tr><th>Result</th><th>Driver</th><th>Constructor</th><th>Points</th><th>Time</th><th>Fastest Lap</th><th>Status</th>
-</thead>
-<tbody>
-  <tr ng-repeat="results in race.Results | filter: searchFilter">
-    <td>{{results.position}}</td>
-    <td>
-      <a href="#/{{race.season}}/drivers/{{results.Driver.driverId}}">
-        {{results.Driver.givenName}}&nbsp;{{results.Driver.familyName}}
-      </a>
-    </td>
-    <td>
-      <a href="#/{{race.season}}/constructor/{{results.Constructor.constructorId}}">
-        {{results.Constructor.name}}
-      </a>
-    </td>
-    <td>{{results.points}}</td>
-    <td>{{results.Time.time}}</td>
-    <td>{{results.FastestLap.Time.time}}</td>
-    <td>{{results.status}}</td>
+    <tr><th>Result</th><th>Driver</th><th>Constructor</th><th>Points</th><th>Time</th><th>Fastest Lap</th><th>Status</th>
+  </thead>
+  <tbody>
+    <tr ng-repeat="results in race.Results | filter: searchFilter">
+      <td>{{results.position}}</td>
+      <td>
+        <a href="#/{{race.season}}/drivers/{{results.Driver.driverId}}">
+          {{results.Driver.givenName}}&nbsp;{{results.Driver.familyName}}
+        </a>
+      </td>
+      <td>
+        <a href="#/{{race.season}}/constructor/{{results.Constructor.constructorId}}">
+          {{results.Constructor.name}}
+        </a>
+      </td>
+      <td>{{results.points}}</td>
+      <td>{{results.Time.time}}</td>
+      <td>{{results.FastestLap.Time.time}}</td>
+      <td>{{results.status}}</td>
 
-  </tr>
-</tbody>
-</table>
+    </tr>
+  </tbody>
+  </table>
+</div>
