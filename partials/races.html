@@ -3,8 +3,7 @@
   <table class="table table-hover table-condensed ">
   <thead>
     <tr><th colspan="4"><h3>{{raceTable.season}} Race Schedule</h3></th></tr>
-    
-    <tr><th>Number</th><th>Race Name</th><th>Circuit Name</th><th>Location</th><th>Date</th><th>Start Time (Local)</th>
+    <tr><th>Number</th><th>Race Name</th><th>Circuit Name</th><th>Location</th><th>Date</th><th ng-if="raceTable.Races[0].time">Start Time (Your Timezone)</th>
   </thead>
   <tbody>
     <tr ng-repeat="race in racesList | filter: searchFilter">
@@ -22,8 +21,8 @@
       <td>
         {{race.Circuit.Location.locality}}, {{race.Circuit.Location.country}}
       </td>
-      <td>{{race.date + 'T' +race.time| date: 'MM.dd'}}</td>
-      <td>{{race.date +'T'+race.time | date: 'hh:mm a'}}</td>
+      <td ng-if="race">{{race.date +'T'+race.time | date: 'MM.dd'}}</td>
+      <td ng-if="race.time">{{race.date +'T'+race.time | date: 'hh:mm a'}}</td>
     </tr>
   </tbody>
   </table>
