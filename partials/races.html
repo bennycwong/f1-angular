@@ -3,6 +3,7 @@
   <table class="table table-hover table-condensed ">
   <thead>
     <tr><th colspan="4"><h3>{{raceTable.season}} Race Schedule</h3></th></tr>
+    
     <tr><th>Number</th><th>Race Name</th><th>Circuit Name</th><th>Location</th><th>Date</th><th>Start Time (Local)</th>
   </thead>
   <tbody>
@@ -14,9 +15,9 @@
     	  </a>
   	  </td>
       <td>
-        <a href="{{race.Circuit.url}}" target="_blank">
+       
           {{race.Circuit.circuitName}}
-        </a>
+  
       </td>
       <td>
         {{race.Circuit.Location.locality}}, {{race.Circuit.Location.country}}

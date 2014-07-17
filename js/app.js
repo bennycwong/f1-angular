@@ -15,6 +15,6 @@ config(['$routeProvider', function($routeProvider) {
 	when("/:season/drivers/:id", {templateUrl: "partials/driver.html", controller: "driverController"}).
 	when("/:season/races/:id", {templateUrl: "partials/race.html", controller: "raceController"}).
 	when("/:season/constructor/:id", {templateUrl: "partials/constructor.html", controller: "constructorController"}).
-	when("/", {templateUrl: "partials/home.html", controller: "homeController"}).
-	otherwise({redirectTo: '/'});
+	// when("/", {templateUrl: "partials/home.html", controller: "homeController"}).
+	otherwise({redirectTo: '/current/races'});
 }]);
